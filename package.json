@@ -1,0 +1,37 @@
+{
+  "name": "api-base",
+  "private": true,
+  "version": "0.1.0",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "dev": "nodemon app.js",
+    "test": "jest"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^10.0.0",
+    "express": "^4.17.1",
+    "http-errors": "^1.8.0",
+    "jsonschema": "^1.4.1",
+    "mongodb-memory-server": "^8.9.5",
+    "mongoose": "^6.7.1",
+    "morgan": "^1.10.0"
+  },
+  "devDependencies": {
+    "jest": "^29.2.2",
+    "nodemon": "^2.0.12",
+    "supertest": "^6.3.1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/juliojgarciaperez/express-api-base.git"
+  },
+  "keywords": [],
+  "bugs": {
+    "url": "https://github.com/juliojgarciaperez/express-api-base/issues"
+  },
+  "homepage": "https://github.com/juliojgarciaperez/express-api-base#readme",
+  "description": ""
+}
