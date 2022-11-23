@@ -27,7 +27,8 @@ module.exports.getOne = (req, res, next) => {
         res.json(posts);
       } else {
         // Devuelve 404 si el post no existe en la Base de Datos en memoria
-        res.status(404).send();
+        // res.status(404).send();
+        next(createError(404));
       }
     })
     // .catch((err) => res.status(404).send())
@@ -43,7 +44,8 @@ module.exports.patchOne = (req, res, next) => {
     if(post) {
       res.json(post)
     } else {
-      res.status(404).send()
+      // res.status(404).send()
+      next(createError(404));
     }
   })
   // .catch(err => res.status(404).send());
@@ -56,7 +58,8 @@ module.exports.deleteOne = (req, res, next) => {
     if(post){
       res.status(204).send();
     } else {
-      res.status(404).send();
+      // res.status(404).send();
+      next(createError(404));
     }
   })
   // .catch(err => res.status(404).send());
