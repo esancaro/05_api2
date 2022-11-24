@@ -1,35 +1,11 @@
-# Ejercicio 3 - Autenticación
+# Ejercicio final - API REST Completo
 
-Este ejercicio es continuación del API programado para el "Ejercicio 2".
-Sobre el mismo CRUD de Posts, en esta ocasión añadiremos un nuevo modelo de usuario y expondremos endpoints para login
+Este ejercicio es continuación del "Ejercicio 3" por lo que deberá contener de base los mismos requisitos que se pedían para el Ejercicio 3 (CRUD posts, registro, ...) con las siguientes funcionalidades adicionales:
 
-1. Diseño modelo User
+Confirmación de registro
 
-Diseñar y programar un modelo Mongoose "User" con al menos los siguientes campos y validaciones en su esquema:
+Tras crear un usuario (POST /api/users) éste se creara con el campo active: false. El servidor enviará un email a la dirección de correo de registro compartiendo una URL con la que el usuario que reciba el correo pueda hacer GET para modificar el campo "active" de su cuenta a valor "true".
 
-- name, string, requerido
-- email, string, requerido, formato email
-- password, string, requerido
-- bio, string.
-- active: boolean. Default false
-- createdAt: Date,
-- updatedAt: Date.
+NOTA: no es necesario enviar un email. El enlace de validación de cuenta puede ser accedido sin necesidad de enviar un email.
 
-2. API HTTP
-
-Codificar los siguientes endpoints HTTP sobre el API:
-
-POST /api/users
-
-- No necesita estar autenticada
-- Recibe body JSON con los campos name, email, password y bio
-- Almacena el usuario en Base de Datos en memoria cifrando su contraseña
-
-3. POST /api/login
-
-- Recibe body con email, password
-- Devuelve HTTP 200 OK con token JWT de sesión si las credenciales son correctas
-- Devuelve HTTP 400 en caso de error en la validación de datos
-- Devuelve HTTP 401 si las credenciales no son correctas
-
-4. El resto de endpoints de nuestra API (CRUD de Posts) deben requerir autenticación y devolver código HTTP 401 ante peticiones no autenticadas.
+Solo usuarios con el campo active == true podrán hacer login (POST /api/login)

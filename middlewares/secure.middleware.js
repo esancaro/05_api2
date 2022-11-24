@@ -17,13 +17,13 @@ module.exports.auth = (req, res, next) => {
   try {
     const decoded = jwt.verify(token, process.env.SECURE_VAR);
     // console.log("decoded::", decoded);
-    User.findById(decoded.sub)
+    User.findOne({_id: decoded.sub, active: true})
       .then((user) => {
         if (user) {
           req.user = user;
-          next();
+            next();
         } else {
-          next(createError(401, "unauthorized: user not found"));
+          next(createError(401, "unauthorized: invalid user"));
         }
       })
       .catch(next);

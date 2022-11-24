@@ -12,6 +12,7 @@ router.get('/posts', secure.auth, posts.list);
 router.get('/posts/:id', secure.auth, posts.getOne);
 
 router.post('/users', users.create);
+router.post('/users/:id/activate', users.activate);
 router.post('/login', users.login);
 
 module.exports = router;

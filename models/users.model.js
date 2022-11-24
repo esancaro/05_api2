@@ -6,7 +6,7 @@ const bcrypt = require('bcrypt');
 const userSchema = new Schema({
     name: {
         type: String,
-        required: 'name is required'
+        required: 'name is required',
     },
     email: {
         type: String,
@@ -15,11 +15,15 @@ const userSchema = new Schema({
     password: {
         type: String,
         required: 'A valid password is required',
-        match: [PASSWORD_PATTERN, 'the password is invalid']
+        match: [PASSWORD_PATTERN, 'the password is invalid'],
     },
     bio: {
         type: String,
-        maxlength: 200
+        maxlength: 200,
+    },
+    active: {
+      type: Boolean,
+      default: false,
     },
 }, {
     timestamps: true,
