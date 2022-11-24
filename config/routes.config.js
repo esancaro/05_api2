@@ -11,8 +11,8 @@ router.delete('/posts/:id', secure.auth, posts.deleteOne);
 router.get('/posts', secure.auth, posts.list);
 router.get('/posts/:id', secure.auth, posts.getOne);
 
+router.get('/users/:id/activate', users.activate);
 router.post('/users', users.create);
-router.post('/users/:id/activate', users.activate);
 router.post('/login', users.login);
 
 module.exports = router;
