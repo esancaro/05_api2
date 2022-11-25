@@ -1,30 +1,41 @@
 const mongoose = require("mongoose");
 
-const MongoMemoryServer = require('mongodb-memory-server').MongoMemoryServer;
+mongoose
+  .connect(
+    process.env.MONGODB_URI,
+    {
+        useNewUrlParser: true,
+        useUnifiedTopology: true,
+    }
+	)
+  .then((x) => console.log('Connected to the DB'))
+  .catch(err => console.error('Error while connecting to DB', err));
 
-MongoMemoryServer.create()
-  .then((mongoServer) => mongoose.connect(mongoServer.getUri(), {
-    useNewUrlParser: true,
-    dbName: "05_api_2",
-    useUnifiedTopology: true
-  }))
-  .then(() =>
-    console.info(`Successfully connected to the database`)
-  )
-  .catch((error) => {
-    console.error("An error occurred trying to connect to the database", error);
-    process.exit(1);
-  });
+// const MongoMemoryServer = require('mongodb-memory-server').MongoMemoryServer;
 
-process.on("SIGINT", () => {
-  mongoose
-    .disconnect()
-    .then(() => {
-      console.info("Successfully disconected mongodb");
-      process.exit(0);
-    })
-    .catch((error) => {
-      console.error("An error ocurred trying to disconect mongoose", error);
-      process.exit(1);
-    });
-});
+// MongoMemoryServer.create()
+//   .then((mongoServer) => mongoose.connect(mongoServer.getUri(), {
+//     useNewUrlParser: true,
+//     dbName: "05_api_2",
+//     useUnifiedTopology: true
+//   }))
+//   .then(() =>
+//     console.info(`Successfully connected to the database`)
+//   )
+//   .catch((error) => {
+//     console.error("An error occurred trying to connect to the database", error);
+//     process.exit(1);
+//   });
+
+// process.on("SIGINT", () => {
+//   mongoose
+//     .disconnect()
+//     .then(() => {
+//       console.info("Successfully disconected mongodb");
+//       process.exit(0);
+//     })
+//     .catch((error) => {
+//       console.error("An error ocurred trying to disconect mongoose", error);
+//       process.exit(1);
+//     });
+// });
